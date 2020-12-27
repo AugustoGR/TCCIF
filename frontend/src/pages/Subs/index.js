@@ -2,19 +2,31 @@ import React from 'react';
 import './styles.css';
 import '../../global.css';
 import Header from '../Header';
+import { Link } from 'react-router-dom';
 export default function Subs(){
     return(
-       <body className="maincontainer">
+       <div className="maincontainer">
            <Header />
            <div className="titlepage">
                <div className="title">Lista de Substituições</div>
-               <button className="filter">Filtrar</button>
+               <Link className="button" id="filter">Filtrar</Link>
            </div>
-           <div className="teste">
-           <div className="list">
-               <div className="subsmodel"></div>
+           <div className="list-container">
+            <div className="shadow">
+            <div className="list">
+                <div className="subsmodel"></div>
+                <div className="subsmodel"></div>
+                <div className="subsmodel"></div>
+                <div className="subsmodel"></div>
+                <div className="subsmodel"></div>
+                <div className="subsmodel"></div>
+                <div className="subsmodel"></div>
+                <div className="subsmodel"></div>
+                <div className="subsmodel"></div>
+                <div className="subsmodel"></div>
+            </div>
+            </div>
            </div>
-           </div>
-       </body>
+       </div>
     )
 }

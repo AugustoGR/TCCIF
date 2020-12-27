@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './styles.css';
 import '../../global.css';
 import logo from '../../assets/Logo Horizontal 2 IFRS Canoas PNG 1.svg';
@@ -9,7 +10,7 @@ export default function Header(){
            <img id="logoif" src={logo}/>
            <div id="login">
            <img id="user" src={usericon}/>
-           <button id="entra">Entrar</button>
+           <Link className="button" id='entra' to="../Login">Entrar</Link>
            </div>
        </header>
     )
