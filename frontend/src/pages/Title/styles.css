@@ -1,0 +1,21 @@
+.titlepage{
+    display: flex;
+    height: 85px;
+    width: 100vw;
+    max-width: 1100px;
+    padding-top: 1.5%;
+    margin: 0 auto;
+}
+.title{
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 20px;
+    color:white;
+    width: 280px;
+    height: 40px;
+    background:#33A048;
+    border-radius: 0 30px 0 30px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    margin-left: 15%;
+}

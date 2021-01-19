@@ -1,9 +1,13 @@
 import React from 'react';
-import './style.css';
+import './styles.css';
 import '../../global.css';
-
+import Header from '../Header';
+import Title from '../Title';
 export default function CriaSub(){
     return(
-        'Hello there'
+        <div className="novasub-container">
+        <Header />
+        <Title titulo="Criar Substituição"></Title>
+        </div>
     )
 }

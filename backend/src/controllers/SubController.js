@@ -12,6 +12,7 @@ obs.
 }
  */
 
+const { json } = require('express');
 const connection = require('../database/connection');
 
 module.exports = {
@@ -31,8 +32,8 @@ module.exports = {
         return response.json({id});
     },
     async index(request, response){
-        const subs = await connection('substituicoes').select('*');
-        return response.json(subs);
+        const result = await connection('substituicoes').select('*');
+        return response.json(result);
     }
 
 }
