@@ -7,9 +7,9 @@ import usericon from '../../assets/user.svg';
 export default function Header(){
     return(
        <header>
-           <img id="logoif" src={logo}/>
+           <img id="logoif" alt="" src={logo}/>
            <div id="login">
-           <img id="user" src={usericon}/>
+           <img id="user" alt="" src={usericon}/>
            <Link className="button" id='entra' to="../Login">Entrar</Link>
            </div>
        </header>

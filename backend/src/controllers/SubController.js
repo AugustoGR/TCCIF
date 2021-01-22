@@ -17,8 +17,9 @@ const connection = require('../database/connection');
 
 module.exports = {
     async create(request, response){
-        const {id_turma, horario, id_profsub, id_dis, id_disub, status, data} = request.body;
-        const id_prof = request.headers.authorization;
+        const {id_prof,id_turma, horario, id_profsub, id_dis, id_disub, data} = request.body;
+        //const id_prof = request.headers.authorization;
+        var status = 'requirido';
         const [id] = await connection('substituicoes').insert({
             id_turma,
             horario,

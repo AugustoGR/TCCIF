@@ -6,7 +6,9 @@
      outline: 0;
      box-sizing: border-box;
  }
-
+label{
+    color: rgb(43, 141, 63);
+}
 body {
     font: 400 14px Roboto, sans-serif;
 }
@@ -19,6 +21,11 @@ input{
     border-left: 0;
     border-right: 0;
     border-color: darkgray;
+}
+p{
+    font: 600 16px Roboto, sans-serif;
+    color: #1b7a2e;
+    display: inline;
 }
 .button{
     border: 0;
