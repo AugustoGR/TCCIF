@@ -1,39 +1,31 @@
-/**Classe Substituição{
-id;
-turma;
-horárioDaSub;
-profSubstituído:
-profSubstituto:
-matSubstituída;
-matSubstituta;
-status;
-dataSub;
-obs.
-}
- */
-
 const { json } = require('express');
 const connection = require('../database/connection');
 
 module.exports = {
     async create(request, response){
-        const {id_prof,id_turma, horario, id_profsub, id_dis, id_disub, data} = request.body;
+        const {prof,turma, horario, profSub, mat, matSub, data, id_prof} = request.body;
         //const id_prof = request.headers.authorization;
-        var status = 'requirido';
+        var status = 'Requerido';
         const [id] = await connection('substituicoes').insert({
-            id_turma,
+            turma,
             horario,
-            id_prof,
-            id_profsub,
-            id_dis,
-            id_disub,
+            prof,
+            profSub,
+            mat,
+            matSub,
             status,
             data,
+            id_prof,
         });
         return response.json({id});
     },
     async index(request, response){
         const result = await connection('substituicoes').select('*');
+        return response.json(result);
+    },
+    async getOne(request, response){
+        const {id} = request.params;
+        const result = await connection('substituicoes').where('id',id).select('*');
         return response.json(result);
     }
 

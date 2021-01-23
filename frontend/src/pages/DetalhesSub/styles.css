@@ -1,9 +1,5 @@
-.form-container{
+.dados-container{
     width: 100vw;
-    display: flex;
-}
-.form-sub{
-    width: 100%;
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
@@ -11,40 +7,41 @@
     align-content: center;
     justify-content:space-evenly;
 }
-#input-turma{
-    width: 80px;
-}
-#input-data{
-    width: 130px;
-}
-#input-hora{
-    width: 80px;
-}
 .inp{
     padding:20px 0;
 }
-.inpsub{
+._valor{
+    display: block;
+    border-bottom:solid 2px;
     font-size: 14px;
     color: rgb(151, 150, 150);
     width: 350px;
+    font-weight: 400;
 }
-
+.short_valor{
+    padding: 0 5px;
+    border-bottom:solid 2px;
+    font-size: 14px;
+    color: rgb(151, 150, 150);
+    font-weight: 400;
+}
 @media screen and (max-width:800px){
-    .form-sub{
+    .dados-container{
         grid-template-columns: repeat(2, 1fr);
         width: 90%;
     } 
-    .inpsub{
+    ._valor{
         width: 260px;
     }
 }
-
 @media screen and (max-width:600px){
-    .form-sub{
-        grid-template-columns: repeat(1, 1fr);
+    .dados-container{
+        grid-template-columns: repeat(1, auto);
         width: auto;
+        justify-content:center;
+        align-items: center;
     } 
-    .inpsub{
+    .valor{
         width: 300px;
     }
 }
