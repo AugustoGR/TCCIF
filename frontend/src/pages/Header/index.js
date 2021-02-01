@@ -20,6 +20,7 @@ export default function Header(){
 
     function logout(){
         localStorage.clear();
+        alert("Você efetuou o logout");
         history.push('/');
     }
 

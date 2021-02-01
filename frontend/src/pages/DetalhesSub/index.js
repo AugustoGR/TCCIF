@@ -20,7 +20,7 @@ export default function DetSub(){
     function useQuery() {
         return new URLSearchParams(useLocation().search);
     }
-    
+
     useEffect(() =>{
         api.get('substituicoes/'+query.get("id")).then(response =>{save(response.data)})
     },[]);

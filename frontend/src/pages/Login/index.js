@@ -15,7 +15,7 @@ export default function Login(){
         const dados ={id, senhainfo};
         e.preventDefault();
         try{
-            api.post('sessions',dados)
+            const response = await api.post('sessions',dados)
             localStorage.setItem('id',id);
             history.push('/');
         }
