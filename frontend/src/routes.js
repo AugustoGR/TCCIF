@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Subs from './pages/Subs';
 import CriaSub from './pages/CriaSub';
 import DetSub from './pages/DetalhesSub';
+import Confirma from './pages/Confirma'
 export default function Routes(){
     return(
        <BrowserRouter>
@@ -12,6 +13,7 @@ export default function Routes(){
             <Route path="/login" component={Login}/>
             <Route path='/novasub' component={CriaSub}/>
             <Route path='/detalhessub' component={DetSub}/>
+            <Route path='/confirmacao' component={Confirma}/>
         </Switch>
        </BrowserRouter> 
     )

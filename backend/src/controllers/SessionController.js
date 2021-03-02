@@ -10,7 +10,7 @@ module.exports ={
             return response.status(400).json({error: 'Professor não encontrado'});
         }
         else if(senhainfo !== prof.senha){
-            return response.status(400).json({error: 'Senha incorreta'});
+            return response.status(400).json({error: 'Senha incorreta', nome: prof.nome});
         }
         else{
             return response.json({"ath":"true"});

@@ -1,0 +1,19 @@
+#confbody{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    border: solid;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+}
+#divtxt{
+    width: 200px;
+    height: 100px;
+    border: 2px solid #F2F2F2;
+    border-radius: 28px;
+    background: #c9c9c9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
