@@ -11,6 +11,7 @@ import usericon from '../../assets/user.svg';
 export default function Subs(){
 
     const [subList, setSubList] = useState([]);
+    const [filtro, setFiltro] = useState("");
 
     function tratadata(date){
         var data = new Date(date);
@@ -24,7 +25,7 @@ export default function Subs(){
     useEffect(()=>{
         api.get('substituicoes').then(response => {
         setSubList(response.data)})
-    },[]);
+    },[subList]);
 
     function novasub(){
         if(localStorage.getItem('id')){
@@ -37,11 +38,13 @@ export default function Subs(){
     return(
        <div className="maincontainer">
             <Header />
-            <Title titulo="Lista de Substituições"><div id="options">{novasub()}<button className="button">Filtrar</button></div></Title>
+            <Title titulo="Lista de Substituições"><div id="options"><div id="filtra"><input placeholder="Filtrar..." id="filtertext" value={filtro} onChange={e =>setFiltro(e.target.value)}></input><img id="lupa"src="https://img.icons8.com/pastel-glyph/64/26e07f/search--v1.png"/></div>{novasub()}</div></Title>
             <div className="list-container">
                 <div className="shadow">
                     <div className="list">
                         {subList.map(sub =>{
+                            if(sub.status != 'Requerido'){
+                            if(filtro == sub.id || filtro == "" || filtro .toLowerCase() == sub.turma.toLowerCase() || filtro.toLowerCase() == sub.prof.toLowerCase()){
                             var string = "/detalhessub?id="+sub.id; 
                             return(
                             <Link id="fichabutton" to={string} key={sub.id}>
@@ -57,6 +60,7 @@ export default function Subs(){
                                 </div>
                             </Link>
                             )
+                            }}
                         })
                         }
                     </div>

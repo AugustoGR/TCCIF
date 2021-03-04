@@ -25,6 +25,11 @@
     color: rgb(151, 150, 150);
     font-weight: 400;
 }
+#cancela{
+    background: rgb(116, 0, 0);
+    margin: auto 0 0 auto;
+    display: none;
+}
 @media screen and (max-width:800px){
     .dados-container{
         grid-template-columns: repeat(2, 1fr);

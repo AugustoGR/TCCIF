@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useLocation} from 'react-router-dom';
+import {useLocation, useHistory} from 'react-router-dom';
 import './styles.css';
 import '../../global.css';
 import Header from '../Header';
@@ -15,6 +15,8 @@ export default function DetSub(){
     const [mat, setMatSubstituida] = useState(null);
     const [matSub, setMatSubstituta] = useState(null);
     const [horario, setHorario] = useState(null);
+    const profidlog = localStorage.getItem('id');
+    const history = useHistory();
     let query = useQuery();
 
     function useQuery() {
@@ -25,7 +27,7 @@ export default function DetSub(){
         api.get('substituicoes/'+query.get("id")).then(response =>{save(response.data)})
     },[]);
 
-    function save([{prof,turma, horario, profsub, mat, matsub, data}]){
+    function save([{prof,turma, horario, profsub, mat, matsub, data, id_prof}]){
         setTurma(turma);
         setData(tratadata(data));
         setMatSubstituida(mat);
@@ -33,6 +35,17 @@ export default function DetSub(){
         setHorario(horario);
         setSubstituido(prof);
         setSubstituto(profsub);
+        if(profidlog == id_prof){
+            var botao = document.getElementById('cancela')
+            botao.style.display = 'inline-block';
+        }
+    }
+
+    function cancela(){
+        let test = window.confirm("Tem certeza de que deseja cancelar essa substituição ?");
+        if(test){
+            history.push('/')
+        }
     }
 
     function tratadata(date){
@@ -43,7 +56,6 @@ export default function DetSub(){
         var mes = (m.length === 1) ? '0'+m:m;
         return(dia+'/'+mes+'/'+data.getFullYear());
     }
-
     return(
         <div className="novasub-container">
             <Header />
@@ -70,6 +82,7 @@ export default function DetSub(){
                     <label className="inp">Horário da substituição:
                         <p className="short_valor">{horario}</p>
                     </label>
+                    <button className="button" id="cancela" onClick={cancela} >Cancelar</button>
             </div>
         </div>
     )
