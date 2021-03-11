@@ -15,6 +15,8 @@ export default function DetSub(){
     const [mat, setMatSubstituida] = useState(null);
     const [matSub, setMatSubstituta] = useState(null);
     const [horario, setHorario] = useState(null);
+    const [status, setStatus] = useState(null);
+    const [idprofff, setId] = useState(null);
     const profidlog = localStorage.getItem('id');
     const history = useHistory();
     let query = useQuery();
@@ -27,7 +29,7 @@ export default function DetSub(){
         api.get('substituicoes/'+query.get("id")).then(response =>{save(response.data)})
     },[]);
 
-    function save([{prof,turma, horario, profsub, mat, matsub, data, id_prof}]){
+    function save([{prof,turma, horario, profsub, mat, matsub, data, id_prof, status}]){
         setTurma(turma);
         setData(tratadata(data));
         setMatSubstituida(mat);
@@ -35,7 +37,11 @@ export default function DetSub(){
         setHorario(horario);
         setSubstituido(prof);
         setSubstituto(profsub);
-        if(profidlog == id_prof){
+        setStatus(status);
+        setId(id_prof);
+        
+        if(profidlog == id_prof && status != 'Cancelada'){
+            console.log(status);
             var botao = document.getElementById('cancela')
             botao.style.display = 'inline-block';
         }
@@ -43,7 +49,8 @@ export default function DetSub(){
 
     function cancela(){
         let test = window.confirm("Tem certeza de que deseja cancelar essa substituição ?");
-        if(test){
+        if(test && localStorage.getItem('id') == idprofff){
+            const result = api.post('cancela/'+query.get('id'))
             history.push('/')
         }
     }
@@ -54,6 +61,7 @@ export default function DetSub(){
         var m =(data.getMonth()+1).toString();
         var dia = (d.length === 1) ? '0'+d:d;
         var mes = (m.length === 1) ? '0'+m:m;
+        console.log(idprofff);
         return(dia+'/'+mes+'/'+data.getFullYear());
     }
     return(
@@ -81,6 +89,9 @@ export default function DetSub(){
                     </label>
                     <label className="inp">Horário da substituição:
                         <p className="short_valor">{horario}</p>
+                    </label>
+                    <label className="inp">Status:
+                        <p className="short_valor">{status}</p>
                     </label>
                     <button className="button" id="cancela" onClick={cancela} >Cancelar</button>
             </div>

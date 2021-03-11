@@ -37,9 +37,18 @@
     margin-right: 15%;
 }
 #more{
-    margin-top: 12px;
     width: 30px;
     height: 30px;
+}
+#useritens{
+    margin-top: 12px;
+    display: flex;
+    width: 150px;
+}
+#minhasub{   
+    height: 25px;
+    width: 100px;
+    margin-left: 15px;
 }
 .dados{
     display: grid;
@@ -102,6 +111,7 @@
 width: 9%;
 float: right;
 }
+
 .valor{
     font: 400 15px Roboto, sans-serif;
 }

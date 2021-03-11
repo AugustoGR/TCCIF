@@ -26,9 +26,10 @@
     font-weight: 400;
 }
 #cancela{
+    display: none;
     background: rgb(116, 0, 0);
     margin: auto 0 0 auto;
-    display: none;
+    grid-column-start: 2;  
 }
 @media screen and (max-width:800px){
     .dados-container{
