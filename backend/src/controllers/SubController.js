@@ -20,7 +20,7 @@ const nodemailer = require('nodemailer');
             secure: false,
             auth: {
                 user: "ssap.tcc@outlook.com",
-                pass: "jajaja12"
+                pass: "######"
             }
         })
         transporter.sendMail({
