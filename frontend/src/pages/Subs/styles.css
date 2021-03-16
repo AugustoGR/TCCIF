@@ -128,3 +128,12 @@ float: right;
 #more:hover {
     filter: brightness(80%);
 }
+
+@media screen and (max-width:800px){
+    .subsmodel{
+        height: 100px;
+    }
+    #filtertext{
+        width: 90px;
+    }
+}

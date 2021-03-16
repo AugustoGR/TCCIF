@@ -16,7 +16,7 @@ module.exports = {
     client:'mysql',
     connection: {
       host:'localhost',
-      database:'novotcc',
+      database:'tccfinal',
       user:'root',
       password: ''
     },

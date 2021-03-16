@@ -29,13 +29,13 @@ export default function DetSub(){
         api.get('substituicoes/'+query.get("id")).then(response =>{save(response.data)})
     },[]);
 
-    function save([{prof,turma, horario, profsub, mat, matsub, data, id_prof, status}]){
+    function save([{nome,turma, horario, profsub, mat, matsub, data, id_prof, status}]){
         setTurma(turma);
         setData(tratadata(data));
         setMatSubstituida(mat);
         setMatSubstituta(matsub);
         setHorario(horario);
-        setSubstituido(prof);
+        setSubstituido(nome);
         setSubstituto(profsub);
         setStatus(status);
         setId(id_prof);
@@ -67,7 +67,7 @@ export default function DetSub(){
     return(
         <div className="novasub-container">
             <Header />
-            <Title titulo="Detalhes da substituição"></Title>
+            <div id="titulo"><Title titulo="Detalhes da substituição"></Title></div>
             <div className="dados-container">
                     <label className="inp">Turma:
                         <p className="short_valor">{turma}</p>

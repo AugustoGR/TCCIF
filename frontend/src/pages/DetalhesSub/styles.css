@@ -41,6 +41,13 @@
     }
 }
 @media screen and (max-width:600px){
+    .novasub-container{
+        display:flex;
+        flex-direction: column;
+    }
+    #titulo{
+        margin: auto;
+    }
     .dados-container{
         grid-template-columns: repeat(1, auto);
         width: auto;
@@ -49,5 +56,8 @@
     } 
     .valor{
         width: 300px;
+    }
+    #cancela{
+        grid-column-start: 1;  
     }
 }

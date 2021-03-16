@@ -16,12 +16,33 @@ export default function CriaSub(){
     const [mat, setMatSubstituida] = useState(null);
     const [matSub, setMatSubstituta] = useState(null);
     const [horario, setHorario] = useState(null);
+    const [horariofim, setHorariofim] = useState(null);
     const history = useHistory();
+
+    function hidden(){
+        var inp = document.getElementById('novamat');
+        var ask = document.getElementById('ask');
+        if(inp.style.display == ''){
+            inp.style.display = 'none';
+            ask.style.display = 'none';
+        }
+        console.log(document.getElementById('novamat').style.display)
+        if(inp.style.display == 'none'){
+            inp.style.display = 'inline-block';
+            ask.style.display = 'inline-block';
+        }
+        else{
+            inp.style.display = 'none';
+            ask.style.display = 'none';
+        }
+       
+    }
 
     async function register(e){
         e.preventDefault();
-        const id_prof = localStorage.getItem('id');
-        const dados = {prof,turma, horario, profSub, mat, matSub, data, id_prof};
+        const email = localStorage.getItem('email');
+        const jwt = localStorage.getItem('id_token');
+        const dados = {prof,turma, horario, horariofim, profSub, mat, matSub, data, email,jwt};
         var valid;
         try{ 
             const response = await api.post('substituicoes',dados);
@@ -73,16 +94,22 @@ export default function CriaSub(){
                             onChange={e=>setMatSubstituida(e.target.value)}
                         ></input>
                     </label>
-                    <label className="inp">Matéria substituta:<br/>
-                        <input className="inpsub" autoComplete="off"
+                    <label className="inp">Definir nova matéria a ser aplicada: <input onChange={hidden} type="checkbox"></input><br/><label id="ask">Qual?</label><br/>
+                        <input id="novamat" className="inpsub" autoComplete="off"
                             value={matSub}
                             onChange={e=>setMatSubstituta(e.target.value)}
                         ></input>
                     </label>
-                    <label className="inp">Horário da substituição:
+                    <label className="inp">Horário de início da substituição: 
                         <input type="time" id="input-hora" className="inpsub"
                             value={horario}
                             onChange={e=>setHorario(e.target.value)}
+                        ></input>
+                    </label>
+                    <label className="inp">Horário de fim da substituição: 
+                        <input type="time" id="input-hora" className="inpsub"
+                            value={horariofim}
+                            onChange={e=>setHorariofim(e.target.value)}
                         ></input>
                     </label>
                     <button className="button" type="submit" >Enviar</button>

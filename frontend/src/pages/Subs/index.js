@@ -14,6 +14,7 @@ export default function Subs(){
     const [filtro, setFiltro] = useState("");
     const [lista, setLista] = useState("todas");
     const [selecionado, setSelecionado] = useState("Minhas Subs");
+
     function tratadata(date){
         var data = new Date(date);
         var d =data.getDate().toString();
@@ -29,36 +30,42 @@ export default function Subs(){
     },[subList]);
 
     function logado(){
-        if(localStorage.getItem('id')){
-            return (
-                <div id="useritens">
-                <Link to="../novasub"><img id="more" alt="" src={iconmore} height="24px"/></Link>
-                <button onClick={minhasubs} id="minhasub" className="button">{selecionado}</button>
-                </div>
-            )
+        
+        if(localStorage.getItem('email')){
+            const email = localStorage.getItem('email');
+            const domain = email.split('@') 
+            if(domain[1]==="campus.ifrs.edu.br"||domain[1]==="canoas.ifrs.edu.br"){
+                return (
+                    <div id="useritens">
+                        <Link to="../novasub"><img id="more" alt="" src={iconmore} height="24px"/></Link>
+                        <button onClick={minhasubs} id="minhasub" className="button">{selecionado}</button>
+                    </div>
+                )
+            }
         }
     }
     function minhasubs(){
         if(lista === "todas"){
-        setLista("minhas");
-        setSelecionado("Todas as Subs")
+            setLista("minhas");
+            setSelecionado("Todas as Subs")
         }
         else{
             setLista("todas");
-        setSelecionado("Minhas Subs")
+            setSelecionado("Minhas Subs")
         }
     }
     return(
        <div className="maincontainer">
             <Header />
-            <Title titulo="Lista de Substituições"><div id="options"><div id="filtra"><input placeholder="Filtrar..." id="filtertext" value={filtro} onChange={e =>setFiltro(e.target.value)}></input><img id="lupa"src="https://img.icons8.com/pastel-glyph/64/26e07f/search--v1.png"/></div>{logado()}</div></Title>
+            <Title titulo="Lista de Substituições"></Title>
+            <div id="options"><div id="filtra"><input placeholder="Filtrar..." id="filtertext" value={filtro} onChange={e =>setFiltro(e.target.value)}></input><img id="lupa"src="https://img.icons8.com/pastel-glyph/64/26e07f/search--v1.png"/></div>{logado()}</div>
             <div className="list-container">
                 <div className="shadow">
                     <div className="list">
                         {
                         subList.map(sub =>{
                                     var testlist = false; 
-                                    if(lista === "minhas" && sub.id_prof == localStorage.getItem('id')){
+                                    if(lista === "minhas" && sub.email == localStorage.getItem('email')){
                                         testlist = true;
                                     }
                                     else if(sub.status != 'Requerido'){
@@ -72,7 +79,7 @@ export default function Subs(){
                                                     <div className="subsmodel">
                                                         <div className="photo"><img alt=""src={usericon}/></div>
                                                         <div className="dados">
-                                                            <div><p>Professor(a): </p><p className="valor">{sub.prof}</p></div>
+                                                            <div><p>Professor(a): </p><p className="valor">{sub.nome}</p></div>
                                                             <div><p>Data: </p><p className="valor">{tratadata(sub.data)}</p></div>
                                                             <div id="id"><p>ID: </p><p className="valor">{sub.id}</p></div>
                                                             <div><p>Turma: </p><p className="valor">{sub.turma}</p></div>

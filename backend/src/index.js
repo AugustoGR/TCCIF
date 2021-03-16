@@ -15,6 +15,6 @@ const sslServer = https.createServer(
     cert:fs.readFileSync(path.join(__dirname,'cert', 'cert.pem')),
 
 },app)
-sslServer.listen(3443, console.log('ola?'));
+sslServer.listen(3443);
 
 
